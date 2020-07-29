@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 import com.farm.web.dao.FavItemDao;
 import com.farm.web.dao.MemberDao;
 import com.farm.web.entity.FavItem;
+import com.farm.web.entity.FavItemView;
 import com.farm.web.entity.Member;
 
 @Service
 public class FavItemService {
+	
 	@Autowired
 	FavItemDao favItemDao;
 	@Autowired
@@ -44,6 +46,18 @@ public class FavItemService {
 		}
 		
 		return res;
+	}
+	
+	public List<FavItemView> getViewList(String uid){
+		Member member = memberDao.getFromUid(uid);
+		int memberid = member.getId();
+		List<FavItemView> filist = favItemDao.getViewList(memberid);
+		
+		if(filist.isEmpty())
+			filist=null;
+		
+		return filist;
+		
 	}
 
 }

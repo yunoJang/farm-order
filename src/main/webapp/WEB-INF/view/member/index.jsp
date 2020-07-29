@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/js/index.js"></script>
+    <script src="/js/member/index.js"></script>
 
     <title>은풍한팜</title>
 </head>
@@ -146,8 +148,8 @@
                 <h1 class="d-none">aside</h1>
                 <section class="profile-container">
                     <h1 class="d-none">프로필</h1>
-                    <span class="profile-name">장윤호 님</span><br>
-                    <span class="profile-id">hangan****</span><br>
+                    <span class="profile-name">${m.name} 님</span><br>
+                    <span class="profile-id">${m.uid}</span><br>
                     <button class="info-update-button">정보 변경</button>
                 </section>
                 <section class="menu-container">
@@ -155,7 +157,6 @@
                     <section>
                         <h1 class="menu-h">관심</h1>
                         <ul>
-                            <li><a href="">관심상품</a></li>
                             <li><a href="">최근 본 상품</a></li>
                             <li><a href="">관심 Farm</a></li>
                         </ul>
@@ -195,14 +196,20 @@
                     <section>
                         <header>
                             <h1 class="menu-h">관심상품</h1>
-                            <span class="all-view-font">전체보기</span>
+                            <a href="" class="all-view-font fav-item">전체보기</a>
                         </header>
-                        <div class="att-list">
-                            <div class="list-none-msg d-none">관심 상품이 없습니다.</div>
-                            <div class="att-item"><img src="../images/product1.jpg"><div class="att-item-des">[은팜독점] 특가 쌀 15kg</div></div>
-                            <div class="att-item"><img src="../images/product1.jpg"><div class="att-item-des">[은팜독점] 특가 쌀 15kg</div></div>
-                            <div class="att-item"><img src="../images/product1.jpg"><div class="att-item-des">[은팜독점] 특가 쌀 15kg</div></div>
-                            <div class="att-item"><img src="../images/product1.jpg"><div class="att-item-des">[은팜독점] 특가 쌀 15kg</div></div>
+                        <div class="att-list fav-item-list">
+                        	<c:if test="${filist eq null}">
+                            <div class="list-none-msg">관심 상품이 없습니다.</div>
+                           </c:if>
+                            <c:forEach var="n" items="${filist}">	
+                            	<a class="fav" href="/item/${n.itemId}">
+                            		<div class="att-item">
+                            			<img src="../images/${n.itemImgName }">
+                            			<div class="att-item-des">[은팜독점] ${ n.itemName}</div>
+                            		</div>
+                            	</a>
+                            </c:forEach>
                         </div>
                     </section>
                     <section>

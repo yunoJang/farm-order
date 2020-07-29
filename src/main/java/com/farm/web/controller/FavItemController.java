@@ -1,6 +1,7 @@
 package com.farm.web.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.farm.web.entity.FavItemView;
 import com.farm.web.service.FavItemService;
 
 @Controller
@@ -28,6 +30,18 @@ public class FavItemController {
 		int res = favItemService.insert(itemId,uName);
 		
 		return res;
+	}
+	
+	@GetMapping("viewList")
+	@ResponseBody
+	public List<FavItemView> viewList(
+			Principal principal) {
+//		String uName = principal.getName();
+		String uid = "yuno"; 
+		
+		List<FavItemView> filist = favItemService.getViewList(uid);
+		
+		return filist;
 	}
 	
 }
