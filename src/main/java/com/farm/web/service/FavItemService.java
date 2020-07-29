@@ -1,10 +1,13 @@
 package com.farm.web.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.farm.web.dao.FavItemDao;
 import com.farm.web.dao.MemberDao;
+import com.farm.web.entity.FavItem;
 import com.farm.web.entity.Member;
 
 @Service
@@ -16,8 +19,30 @@ public class FavItemService {
 	
 	public int insert(int itemId, String uName) {
 		Member member = memberDao.getFromUid(uName);
-		int userId = member.getId();
-		int res = favItemDao.insert(itemId,userId);
+		int memberId = member.getId();
+		
+		int favId = 0;
+		boolean isFavContain = false;
+		
+		List<FavItem> favList = favItemDao.getListTomemberId(memberId);
+		for(FavItem fi : favList) {
+			if(itemId == fi.getItemId()) {
+				favId = fi.getId();
+				isFavContain = true;
+			}
+		}
+		
+		int res = 0;
+		
+		if(isFavContain) {
+			favItemDao.delete(favId);
+			res = 2;
+		}
+		else {
+			favItemDao.insert(itemId,memberId);
+			res = 1;
+		}
+		
 		return res;
 	}
 

@@ -7,19 +7,20 @@ $(()=>{
     let msgBox = $(".msg-box");
     let msgContent = msgBox.find(".msg");
     let msgClose = msgBox.find(".close");
-
-    msgClose.click(e=>{
-        msgBox.addClass("d-none");
-    });
+    
+    //
+    const itemId = itemTitle.data("id");
 
     basketButton.click(e=>{
         e.preventDefault();
+
+        // fetch(`../basket/contain?id=${itemId}`)
+        // .then(res=> res.json())
+
     })	
 
     attButton.click(e=>{
         e.preventDefault(); 
-
-        let itemId = itemTitle.data("id");
 
         fetch(`../favitem/contain?id=${itemId}`)
         .then(res => res.json())
@@ -37,6 +38,10 @@ $(()=>{
             alertMsgBox(msg);
         })
     })
+
+    msgClose.click(e=>{
+        msgBox.addClass("d-none");
+    });
 
     const alertMsgBox = msg =>{
         msgContent.text(msg);
