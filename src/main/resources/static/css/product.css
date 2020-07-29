@@ -307,7 +307,7 @@
     height: 200px;
     background: white;
     box-shadow: 1px 1px 5px #888;
-    left: 800px;
+    left: 40vw;
     top: 600px;
 }
 	.msg-box .msg{
@@ -326,3 +326,17 @@
 		right: 10px;
 		top: 5px;
 	}
+	.msg-box .button-wrapper{
+		position: absolute;
+		bottom: 15px;
+		left: 157px;
+	}
+		.msg-box .button-wrapper button{
+			cursor:pointer;
+			border: 0;
+		    margin-right: 10px;
+		    width: 55px;
+		    height: 30px;
+		    color: white;
+		    background: #0e5b55;
+	    }

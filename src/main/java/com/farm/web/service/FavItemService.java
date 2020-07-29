@@ -17,33 +17,31 @@ public class FavItemService {
 	@Autowired
 	MemberDao memberDao;
 	
-	public int insert(int itemId, String uName) {
+	public int contain(int itemId, String uName) {
 		Member member = memberDao.getFromUid(uName);
 		int memberId = member.getId();
 		
-		int favId = 0;
-		boolean isFavContain = false;
+		int id = 0;
+		boolean isContain = false;
 		
 		List<FavItem> favList = favItemDao.getListTomemberId(memberId);
 		for(FavItem fi : favList) {
 			if(itemId == fi.getItemId()) {
-				favId = fi.getId();
-				isFavContain = true;
+				id = fi.getId();
+				isContain = true;
 			}
 		}
 		
-		int res = 0;
 		
-		if(isFavContain) {
-			favItemDao.delete(favId);
-			res = 2;
+		if(isContain) {
+			favItemDao.delete(id);
+			return 2;
 		}
 		else {
 			favItemDao.insert(itemId,memberId);
-			res = 1;
+			return 1;
 		}
-		
-		return res;
 	}
-
+	
+	
 }

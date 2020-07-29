@@ -9,25 +9,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.farm.web.service.FavItemService;
+import com.farm.web.service.BasketService;
 
 @Controller
-@RequestMapping("/favitem/")
-public class FavItemController {
+@RequestMapping("/basket/")
+public class BasketController {
 	
 	@Autowired
-	FavItemService favItemService;
+	BasketService basketService;
 	
 	@ResponseBody
 	@GetMapping("contain")
 	public int contain(@RequestParam(name = "id")int itemId,
+			int qty,
 			Principal principal) {
 //		String uName = principal.getName();
-		String uName = "yuno"; 
+		String uName = "yuno";
 		
-		int res = favItemService.contain(itemId,uName);
+		int res = basketService.contain(itemId,qty,uName);
 		
 		return res;
 	}
 	
+	@ResponseBody
+	@GetMapping("append")
+	public int append(@RequestParam(name = "id")int itemId,
+			int qty,
+			Principal principal) {
+//		String uName = principal.getName();
+		String uName = "yuno";
+		
+		int res = basketService.append(itemId,qty,uName);
+		
+		return res;
+	}
+	
+
 }

@@ -143,6 +143,10 @@
     	<section class="msg-box d-none">
 			<span class="close">X</span>
     		<div class="msg">메세지</div>
+    		<div class="button-wrapper d-none">
+    			<button class="accept-button">수락</button>
+    			<button class="reject-button">거절</button>
+    		</div>
     	</section>
     	
         <section class="content-container">

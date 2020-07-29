@@ -7,15 +7,38 @@ $(()=>{
     let msgBox = $(".msg-box");
     let msgContent = msgBox.find(".msg");
     let msgClose = msgBox.find(".close");
+    let buttonWrapper = msgBox.find(".button-wrapper");
+    let acceptButton = buttonWrapper.find(".accept-button");
+    let rejectButton = buttonWrapper.find(".reject-button");
     
     //
     const itemId = itemTitle.data("id");
 
+    acceptButton.click(e=>{
+        fetch(`../basket/append?id=${itemId}&qty=1`)
+        .then(()=>{
+            msgBox.addClass("d-none");
+            buttonWrapper.addClass("d-none");
+        })
+    });
+
     basketButton.click(e=>{
         e.preventDefault();
 
-        // fetch(`../basket/contain?id=${itemId}`)
-        // .then(res=> res.json())
+        fetch(`../basket/contain?id=${itemId}&qty=1`)
+        .then(res=> res.json())
+        .then(json=>{
+            if(json == 1)
+                msg = "장바구니에 등록하였습니다.";
+            else if(json == 2){
+                msg = "이미 등록된 상품입니다. 추가하시겠습니까?";
+                buttonWrapper.removeClass("d-none");
+            }
+            else
+                msg = "장바구니에 등록할 수 없습니다.";
+
+            alertMsgBox(msg);
+        })
 
     })	
 
@@ -25,22 +48,23 @@ $(()=>{
         fetch(`../favitem/contain?id=${itemId}`)
         .then(res => res.json())
         .then(json=>{
-            if(json == 1){
+            if(json == 1)
                 msg = "관심상품에 등록하였습니다.";
-            }
-            else if(json == 2){
+            else if(json == 2)
                 msg= "관심상품에서 해제되었습니다.";
-            }
-            else{
+            else
                 msp = "관심상품에 등록할 수 없습니다.";
-            }
 
             alertMsgBox(msg);
         })
     })
-
+    rejectButton.click(e=>{
+        msgBox.addClass("d-none");
+        buttonWrapper.addClass("d-none");
+    })
     msgClose.click(e=>{
         msgBox.addClass("d-none");
+        buttonWrapper.addClass("d-none");
     });
 
     const alertMsgBox = msg =>{
