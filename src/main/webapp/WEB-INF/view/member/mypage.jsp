@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/js/index.js"></script>
 
@@ -43,8 +41,10 @@
                         <h1 class="d-none">상품메뉴</h1>
                         <ul>
                             <li>관심상품</li>
-                            <li>장바구니</li>
-                            <li>주문조회</li>
+                            <li>
+                                <a href="/user/cart.html">장바구니</a>
+                            </li>
+                            <li><a href="/user/order.html">주문조회</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -140,55 +140,99 @@
     </header>
 
     <main class="main">
-        <div class="path">
-            <ol>
-                <li>
-                    <a href="/index.html"> </a>
-                </li>
-                <li>
-                    <a href="/member/login.html">로그인</a>
-                </li>
-            </ol>
-        </div>
-        <section class="login-main-section">
-            <header>
-                <h1 class="d-none">은풍한팜 로그인</h1>
-                <div class="login-intro">
-                    <span>반갑습니다</span>
-                    <img src="../images/logo.png"><span>입니다.</span>
-                </div>
-            </header>
-            <form action="" class="login-form">
-                <input type="text" placeholder="아이디">
-                <input type="password" placeholder="비밀번호">
-                <input type="submit" value="로그인">
-            </form>
-            <div class="login-check">
-                <input class="d-none" type="checkbox" id="id-check"><label for="id-check"></label>
-                <span class="id-check-label">아이디 저장</span>
-            </div>
+        <section class="content-container mypage-main-section">
+            <h1 class="d-none">마이페이지</h1>
+            <aside class="mypage-aside">
+                <h1 class="d-none">aside</h1>
+                <section class="profile-container">
+                    <h1 class="d-none">프로필</h1>
+                    <span class="profile-name">장윤호 님</span><br>
+                    <span class="profile-id">hangan****</span><br>
+                    <button class="info-update-button">정보 변경</button>
+                </section>
+                <section class="menu-container">
+                    <h1 class="d-none">메뉴</h1>
+                    <section>
+                        <h1 class="menu-h">관심</h1>
+                        <ul>
+                            <li><a href="">관심상품</a></li>
+                            <li><a href="">최근 본 상품</a></li>
+                            <li><a href="">관심 Farm</a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h1 class="menu-h">주문 · 배송</h1>
+                        <ul>
+                            <li><a href="">주문/배송 조회</a></li>
+                            <li><a href="">장바구니</a></li>
+                        </ul>
 
-            <ul class="find-button-list">
-                <li><a href="">아이디 찾기</a></li>
-                <li><a href="">비밀번호 찾기</a></li>
-                <li><a href="signup.html">회원가입</a></li>
-            </ul>
+                    </section>
+                </section>
+            </aside>
+            <section class="mypage-body">
+                <h1 class="d-none">myPage-body</h1>
+                <section >
+                    <h1 class="d-none">쇼핑메뉴</h1>
+                    <div class="shopping-menu-container">
+                        <div class="member-info-container">
+                            <div class="member-grade-img">P</div><span class="member-info">개인 회원 <b>장윤호</b> 님</span>
+                        </div>
+                        <div class="shopping-menu">
+                            <div>
+                                <div>0</div>
+                                <span>주문/배송</span>
+                            </div>
+                            <div>
+                                <div>0</div>
+                                <span>장바구니</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="att-container">
+                    <h1 class="d-none">관심목록</h1>
+                    <section>
+                        <header>
+                            <h1 class="menu-h">관심상품</h1>
+                            <span class="all-view-font">전체보기</span>
+                        </header>
+                        <div class="att-list">
+                            <div class="list-none-msg d-none">관심 상품이 없습니다.</div>
+                            <div class="att-item"><img src="../images/product1.jpg"><div class="att-item-des">[은팜독점] 특가 쌀 15kg</div></div>
+                            <div class="att-item"><img src="../images/product1.jpg"><div class="att-item-des">[은팜독점] 특가 쌀 15kg</div></div>
+                            <div class="att-item"><img src="../images/product1.jpg"><div class="att-item-des">[은팜독점] 특가 쌀 15kg</div></div>
+                            <div class="att-item"><img src="../images/product1.jpg"><div class="att-item-des">[은팜독점] 특가 쌀 15kg</div></div>
+                        </div>
+                    </section>
+                    <section>
+                        <header>
+                            <h1 class="menu-h">최근 본 상품</h1>
+                            <span class="all-view-font">전체보기</span>
+                        </header>
+                        <div class="att-list">
+                            <div class="list-none-msg">최근 본 상품이 없습니다.</div>
 
-            <ul class="link-button-list">
-                <li><button class="naver-link-button">네이버 로그인</button></li>
-                <li><button class="kakao-link-button">카카오톡 로그인</button></li>
-            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <header>
+                            <h1 class="menu-h">관심 Farm</h1>
+                            <span class="all-view-font">전체보기</span>
+                        </header>
+                        <div class="att-list">
+                            <div class="list-none-msg">관심 농장이 없습니다.</div>
 
-            <div class="anonymous-container">
-                <button class="anonymous-button">비회원 구매 조회</button>
-            </div>
+                        </div>
+                    </section>
+                </section>
+            </section>
         </section>
     </main>
     
-    <footer class="footer">
-        
-        <button class="up-button"> </button>
 
+    <footer class="footer">
+        <button class="up-button"> </button>
     </footer>
     
 </body>
