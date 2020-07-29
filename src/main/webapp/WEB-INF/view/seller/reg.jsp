@@ -1,0 +1,259 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>은풍한 팜 관리자페이지</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/admin.js"></script>
+</head>
+<body>
+    <header class="admin-header">
+        <h1>
+            관리자페이지
+            <span>판매자님 반갑습니다.</span>
+        </h1>
+        <ul>
+            <li>
+                <a href="/index.html">메인 홈</a>
+            </li>
+            <li>
+                <a href="/admin/admin.html">관리자홈</a>
+            </li>
+            <li>로그아웃</li>
+        </ul>
+    </header>
+    <div class="admin-body">
+        <aside class="aside">
+            <h1 class="d-none">관리자페이지 메뉴</h1>
+            <ul class="admin-menu">
+                <li>
+                    <h2 class="admin-menu-title">
+                        상품관리
+                    </h2>
+                    <ul class="admin-draw-menu">
+                        <li><a href="/seller/reg.html">상품등록</a></li>
+                        <li><a href="/seller/list.html">상품목록</a></li>
+                        <li><a href="/seller/qna.html">상품문의</a></li>
+                        <li><a href="/seller/review.html">상품후기</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h2 class="admin-menu-title">매매관리</h2>
+                    <ul class="admin-draw-menu">
+                        <li><a href="">판매량</a></li>
+                        <li><a href="">주문현황</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+        <main class="admin-main">
+            <section>
+                <h1 class="page-title">상품 등록</h1>
+                <div class="reg-product">
+                    <h2>카테고리</h2>
+                    <div class="reg-product-detail reg-category">
+                        <div class="category-list">
+                            <ul class="main-CAT">
+                                <li>곡물</li>
+                                <li>채소</li>
+                                <li>과일</li>
+                                <li>음료</li>
+                                <li>기타</li>
+                            </ul>
+                            <ul class="sub-CAT grain d-none"> <!--곡류-->
+                                <li>쌀</li>
+                                <li>잡곡</li>
+                            </ul>
+                            <ul class="sub-CAT vege d-none"> <!--채소-->
+                                <li>배추</li>
+                                <li>무</li>
+                                <li>감자</li>
+                            </ul>
+                            <ul class="sub-CAT fruit d-none"> <!--과일-->
+                                <li>사과</li>
+                                <li>배</li>
+                                <li>딸기</li>
+                            </ul>
+                            <ul class="sub-CAT bev d-none"><!--음료-->
+                                <li>케일주스</li>
+                                <li>당근주스</li>
+                                <li>포도즙</li>
+                            </ul>
+                            <ul class="sub-CAT etc d-none"><!--기타 메뉴-->
+                                <li>아이스크림</li>
+                                <li>꿀</li>
+                            </ul>
+                        </div>
+                        <div class="category-result">
+                            
+                                카테고리 선택결과
+                                <span>곡물 &#47; 쌀</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="reg-product">
+                    <h2>상품 기본정보</h2>
+                    <div class="reg-product-detail">
+                        <table>
+                            <tr>
+                                <td class="title-col">상품명</td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>판매가</td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>재고수량</td>
+                                <td>
+                                    <input type="number">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>옵션입력</td>
+                                <td>
+                                    <input type="text" placeholder="옵션 명">&nbsp;
+                                    <input type="text" placeholder="옵션 값">&nbsp;
+                                    <input type="button" value="옵션 추가" class="option-button">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>판매기간</td>
+                                <td>
+                                    <input type="date">&nbsp;~&nbsp;
+                                    <input type="date">
+                                </td>
+                            </tr>
+                            <tr class="product-tag">
+                                <td>상품 검색태그</td>
+                                <td>
+                                    <input type="text">&nbsp;
+                                    <span>#곡물, #쌀</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="reg-product">
+                    <h2>상품 이미지 등록</h2>
+                    <div class="reg-product-detail">
+                        <table>
+                            <tr>
+                                <td class="title-col">상품 대표 이미지</td>
+                                <td>
+                                    <input type="file">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title-col">상품 추가 이미지</td>
+                                <td>
+                                    <input type="file">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="reg-product">
+                    <h2>상품 상세설명</h2>
+                    <div class="reg-product-detail">
+                        에디터? 이미지 업로드?
+                    </div>
+                </div>
+                <div class="reg-product">
+                    <h2>상품 주요정보</h2>
+                    <div class="reg-product-detail option">
+                        <table>
+                            <tr>
+                                <td class="title-col">부가세</td>
+                                <td>
+                                    <input type="button" value="과세상품" class="clicked">
+                                    <input type="button" value="면세상품">
+                                    <input type="button" value="영세상품">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>원산지</td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>제조사</td>
+                                <td>
+                                    <input type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>제조일자</td>
+                                <td>
+                                    <input type="date">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>유효기간</td>
+                                <td>
+                                    <input type="date">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="reg-product">
+                    <h2>배송 및 반품</h2>
+                    
+                    <div class="reg-product-detail">
+                        <table>
+                            <tr>
+                                <td class="title-col">출고지</td>
+                                <td>
+                                    <input type="text">
+                                    판매자 주소 노출 후 - 수정하고 싶으면 수정하도록 해도 될듯   
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title-col">배송조건</td>
+                                <td>
+                                    일반배송, 묶음배송가능, 도서산간배송가능
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title-col">배송비</td>
+                                <td>
+                                    <input type="text">   
+                                    일정금액 이상 무배는 어떻게 해야할지 모르겠음 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>AS 안내</td>
+                                <td>
+                                    <input type="text">
+                                    판매자 전화번호 노출 후 - 수정하고 싶으면 수정하도록 해도 될듯   
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="reg-product-button">
+                    <button class="clicked">상품등록</button>
+                    <button>임시저장</button>
+                    <button>취소</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <footer class="footer">
+        
+        <button class="up-button"> </button>
+    </footer>
+</body>
+</html>

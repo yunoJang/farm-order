@@ -1,0 +1,33 @@
+package com.farm.web.controller;
+
+import java.security.Principal;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.farm.web.service.FavItemService;
+
+@Controller
+@RequestMapping("/favitem/")
+public class FavItemController {
+	
+	@Autowired
+	FavItemService favItemService;
+	
+	@GetMapping("contain")
+	@ResponseBody
+	public int contain(@RequestParam(name = "id")int itemId,
+			Principal principal) {
+//		String uName = principal.getName();
+		String uName = "yuno"; 
+		
+		int res = favItemService.insert(itemId,uName);
+		
+		return res;
+	}
+	
+}
