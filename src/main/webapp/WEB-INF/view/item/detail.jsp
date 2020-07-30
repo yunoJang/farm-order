@@ -143,6 +143,10 @@
     	<section class="msg-box d-none">
 			<span class="close">X</span>
     		<div class="msg">메세지</div>
+    		<div class="button-wrapper d-none">
+    			<button class="accept-button">수락</button>
+    			<button class="reject-button">거절</button>
+    		</div>
     	</section>
     	
         <section class="content-container">
@@ -217,7 +221,7 @@
                                 <tr>
                                     <td></td>
                                     <td>
-                                        <input type="number" value="1" min="1"> 
+                                        <input type="number" value="1" min="1" class="product-count"> 
                                         <button disabled>수량취소</button>
                                     </td>
                                     <td class="font-color-green">1억</td>
