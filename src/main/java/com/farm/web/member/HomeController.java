@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -28,7 +29,7 @@ public class HomeController { // 언젠간 잡아야하는데 컨트롤러에 �
 //		String uid = principal.getName();
 		String uid = "yuno";
 		
-		Member member = memberService.getIndexMember(uid);
+		Member member = memberService.getMember(uid);
 		model.addAttribute("m",member);
 		
 		List<FavItemView> filist = memberService.getFiViewList(uid);
@@ -64,5 +65,32 @@ public class HomeController { // 언젠간 잡아야하는데 컨트롤러에 �
 		return fslist;
 	}
 	
+	
+//	@GetMapping("edit")
+//	public String edit(Principal principal,Model model) {
+//		
+////		String uid = principal.getName();
+//		String uid = "yuno";
+//		
+//		Member member = memberService.getMember(uid);
+//		System.out.println(member);
+//		model.addAttribute("m",member);
+//		
+//		
+//		return "member/edit";
+//	}
+//	
+//	@PostMapping("edit")
+//	public String edit(Principal principal,Model model,Member member) {
+//		
+////		String uid = principal.getName();
+//		String uid = "yuno";
+//		
+//		
+//	
+//		
+//		
+//		return "member/index";
+//	}
 	
 }

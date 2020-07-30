@@ -10,8 +10,8 @@ public class Member {
 	private String name;
 	private String email;
 	private String address;
-	private int mobile;
-	private int phone;
+	private String mobile;
+	private String phone;
 	private Date regDate;
 	private int enabled;
 	private String role;
@@ -20,7 +20,7 @@ public class Member {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Member(int id, String uid, String pwd, String name, String email, String address, int mobile, int phone,
+	public Member(int id, String uid, String pwd, String name, String email, String address, String mobile, String phone,
 			Date regDate, int enabled, String role) {
 		super();
 		this.id = id;
@@ -84,19 +84,19 @@ public class Member {
 		this.address = address;
 	}
 
-	public int getMobile() {
+	public String getMobile() {
 		return mobile;
 	}
 
-	public void setMobile(int mobile) {
+	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

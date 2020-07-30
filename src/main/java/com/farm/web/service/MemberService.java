@@ -22,7 +22,7 @@ public class MemberService { //인덱스 서비스로 가는게 맞는가 ?
 	@Autowired
 	FavSellerDao favSellerDao;
 	
-	public Member getIndexMember(String uid) { 
+	public Member getMember(String uid) { 
 		
 		return memberDao.getFromUid(uid);
 		

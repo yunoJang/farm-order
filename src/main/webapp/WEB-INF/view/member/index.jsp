@@ -150,7 +150,7 @@
                     <h1 class="d-none">프로필</h1>
                     <span class="profile-name">${m.name} 님</span><br>
                     <span class="profile-id">${m.uid}</span><br>
-                    <button class="info-update-button">정보 변경</button>
+                    <button class="info-update-button" onClick="location.href='edit'">정보 변경</button>
                 </section>
                 <section class="menu-container">
                     <h1 class="d-none">메뉴</h1>
