@@ -66,6 +66,7 @@ public class HomeController { // 언젠간 잡아야하는데 컨트롤러에 �
 	}
 	
 	
+	
 //	@GetMapping("edit")
 //	public String edit(Principal principal,Model model) {
 //		
