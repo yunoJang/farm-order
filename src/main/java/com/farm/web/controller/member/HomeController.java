@@ -1,4 +1,4 @@
-package com.farm.web.member;
+package com.farm.web.controller.member;
 
 import java.security.Principal;
 import java.util.List;
