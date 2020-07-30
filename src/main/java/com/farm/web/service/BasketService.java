@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.farm.web.dao.BasketDao;
 import com.farm.web.dao.MemberDao;
 import com.farm.web.entity.Basket;
+import com.farm.web.entity.BasketView;
 import com.farm.web.entity.Member;
 
 @Service
@@ -25,12 +26,12 @@ public class BasketService {
 		
 		boolean isContain = false;
 		
-		List<Basket> basketList = basketDao.getListTomemberId(memberId);
+		List<BasketView> basketList = basketDao.getList(memberId);
 		for(Basket b : basketList) {
 			if(itemId == b.getItemId()) {
 		
 				isContain = true;
-			}
+			};
 		}
 		
 		int res = 0;
@@ -51,7 +52,7 @@ public class BasketService {
 		int cid = 0;
 		int cQty = 0;
 		
-		List<Basket> basketList = basketDao.getListTomemberId(memberId);
+		List<BasketView> basketList = basketDao.getList(memberId);
 		for(Basket b : basketList) {
 			if(itemId == b.getItemId()) {
 				cid = b.getId();
@@ -63,5 +64,29 @@ public class BasketService {
 		
 		return res;
 	}
+
+	public List<BasketView> getList(String uName) {
+		Member member = memberDao.getFromUid(uName);
+		int memberId = member.getId();
+		
+		List<BasketView> bl = basketDao.getList(memberId);
+		
+		return bl;
+	}
+
+	public int delList(int[] selectRows) {
+		String idList = "";
+		for(int i : selectRows)
+			idList += i+",";
+		
+		idList = idList.substring(0, idList.length()-1);
+		
+		return basketDao.delList(idList);
+	}
+
+	public int update(int id, int qty) {
+		return basketDao.update(id, "qty", qty);
+	}
+
 
 }

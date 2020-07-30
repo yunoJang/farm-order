@@ -1,9 +1,10 @@
 $(()=>{
     let itemExplain = $(".product-explain");
     let itemTitle = itemExplain.find(".product-dt");
-    let orderForm = $(".submits");
+    let orderForm = $(".detail-form");
     let basketButton = orderForm.find(".basket-button");
     let attButton = orderForm.find(".att-button");
+    let itemCountInput = orderForm.find(".product-count");
     let msgBox = $(".msg-box");
     let msgContent = msgBox.find(".msg");
     let msgClose = msgBox.find(".close");
@@ -13,9 +14,10 @@ $(()=>{
     
     //
     const itemId = itemTitle.data("id");
+    let itemCount = itemCountInput.val();
 
     acceptButton.click(e=>{
-        fetch(`../basket/append?id=${itemId}&qty=1`)
+        fetch(`../basket/append?id=${itemId}&qty=${itemCount}`)
         .then(()=>{
             msgBox.addClass("d-none");
             buttonWrapper.addClass("d-none");
@@ -24,8 +26,9 @@ $(()=>{
 
     basketButton.click(e=>{
         e.preventDefault();
+        itemCount = itemCountInput.val();
 
-        fetch(`../basket/contain?id=${itemId}&qty=1`)
+        fetch(`../basket/contain?id=${itemId}&qty=${itemCount}`)
         .then(res=> res.json())
         .then(json=>{
             if(json == 1)

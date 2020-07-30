@@ -221,7 +221,7 @@
                                 <tr>
                                     <td></td>
                                     <td>
-                                        <input type="number" value="1" min="1"> 
+                                        <input type="number" value="1" min="1" class="product-count"> 
                                         <button disabled>수량취소</button>
                                     </td>
                                     <td class="font-color-green">1억</td>
