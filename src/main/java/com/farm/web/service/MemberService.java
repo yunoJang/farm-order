@@ -52,7 +52,6 @@ public class MemberService { //인덱스 서비스로 가는게 맞는가 ?
 		
 		return fslist;
 	}
-	
 
 
 

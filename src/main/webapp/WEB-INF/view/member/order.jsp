@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -181,7 +182,7 @@
 
                     <thead>
                         <tr>
-                            <th class="num-col">
+                            <th class="num-col d-none">
                                 <span>
                                     <input type="checkbox" id="check_all" checked>
                                     <label class="d-none">전체 상품 선택</label>
@@ -195,95 +196,61 @@
                     </thead>
 
                     <tbody>
-                        <!-- 반복 부분 시작 foreach로 대체될 예정 -->
+                        <c:forEach var="n" items="${oilist}">
                         <tr>
-                            <td>
-                                <input type="checkbox" checked />
+                            <td class="d-none">
+                                <input type="checkbox"/>
                                 <label class="d-none">상품 선택</label>
                             </td>
                             <td class="cart-table-bold">
-                                <img src="/images/product1.jpg" alt="상품 이미지">
+                                <img src="/images/${n.iImage }" alt="상품 이미지">
                                 <span>
-                                    더채소 모심청 짜먹는 맥문동 배도라지청 스틱 15포더채소 모심청 짜먹는 맥문동 배도라지청 스틱 15포
+                                   ${n.iName }
                                 </span>
                             </td>
 
-                            <td>9,800원(1개)</td>
+                            <td>${n.iPrice }원(${n.qty }개)</td>
 
-                            <td>배송중</td>
+                            <td>${n.status }</td>
 
                             <td>
-                                <a href="" class="re-button">주문취소</a>
+                            <c:set var="status" value="${n.status }" />
+
+								<c:choose>
+								    <c:when test="${status eq '입금대기'}">
+								       <a href="" class="re-button">리뷰작성</a>
+								       <a href="" class="re-button">상품 QnA</a>
+								       <a href="" class="re-button">주문취소</a>
+								    </c:when>
+								     <c:when test="${status eq '입금확인'}">
+								       <a href="" class="re-button">리뷰작성</a>
+								       <a href="" class="re-button">상품 QnA</a>
+								       <a href="" class="re-button">주문취소</a>
+								    </c:when>
+								     <c:when test="${status eq '배송중'}">
+								       <a href="" class="re-button">리뷰작성</a>
+								       <a href="" class="re-button">상품 QnA</a>
+								       <a href="" class="re-button">배송확인</a>
+								    </c:when>
+								     <c:when test="${status eq '배송완료'}">
+								       <a href="" class="re-button">리뷰작성</a>
+								       <a href="" class="re-button">상품 QnA</a>
+								    </c:when>
+								     <c:when test="${status eq '주문취소'}">
+								       <a href="" class="re-button">상품 QnA</a>
+								    </c:when>
+								</c:choose>
+
+
                             </td>
                         </tr>
-                        <!-- 반복 부분 마지막 -->
-
-                        <tr>
-                            <td>
-                                <input type="checkbox" checked />
-                                <label class="d-none">상품 선택</label>
-                            </td>
-                            <td class="cart-table-bold">
-                                <img src="/images/product1.jpg" alt="상품 이미지">
-                                <span>
-                                    더채소 모심청 짜먹는 맥문동 배도라지청 스틱 15포더채소 모심청 짜먹는 맥문동 배도라지청 스틱 15포
-                                </span>
-                            </td>
-
-                            <td>9,800원(1개)</td>
-
-                            <td>운송장조회</td>
-
-                            <td>
-                                <a href="" class="re-button">주문취소</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" checked />
-                                <label class="d-none">상품 선택</label>
-                            </td>
-                            <td class="cart-table-bold">
-                                <img src="/images/product1.jpg" alt="상품 이미지">
-                                <span>
-                                    더채소 모심청 짜먹는 맥문동 배도라지청 스틱 15포더채소 모심청 짜먹는 맥문동 배도라지청 스틱 15포
-                                </span>
-                            </td>
-
-                            <td>9,800원(1개)</td>
-
-                            <td>배송완료</td>
-
-                            <td>
-                                <a href="" class="re-button">리뷰작성</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" checked />
-                                <label class="d-none">상품 선택</label>
-                            </td>
-                            <td class="cart-table-bold">
-                                <img src="/images/product1.jpg" alt="상품 이미지">
-                                <span>
-                                    더채소 모심청 짜먹는 맥문동 배도라지청 스틱 15포더채소 모심청 짜먹는 맥문동 배도라지청 스틱 15포
-                                </span>
-                            </td>
-
-                            <td>9,800원(1개)</td>
-
-                            <td>취소/환불</td>
-
-                            <td>
-                                <a href="" class="re-button d-none">주문취소</a>
-                            </td>
-                        </tr>
+                        </c:forEach>
 
                     </tbody>
 
                 </table>
 
-                <div class="product-button-wrap">
+                <div class="product-button-wrap d-none">
                     <button type="button" class="product-button">선택상품 취소</button>
                     <button type="button" class="product-button">선택상품 변경</button>
                 </div>

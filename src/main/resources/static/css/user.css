@@ -17,7 +17,6 @@
         background-image: url(../images/bar-icon.jpg);
         background-repeat: no-repeat;
         background-position: right center;
-        background-size: 2px 12px;
     }
     .cart-table th:last-child {
         background-image: none;
@@ -235,9 +234,10 @@
             white-space: nowrap;
         }
         .order-table td img {
-            min-width: 100px;
+            width: 100px;
             height: 100px;
             overflow: hidden;
+            margin-left:10px;
         }
         .order-table tr:last-child td {
             border-bottom: 0;
