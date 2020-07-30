@@ -28,19 +28,8 @@ public class MemberService { //인덱스 서비스로 가는게 맞는가 ?
 		
 	}
 	
-	public List<FavItemView> getIndexFiList(String uid) {
+	public List<FavItemView> getFiViewList(String uid) {
 		
-		Member member = memberDao.getFromUid(uid);
-		int memberid = member.getId();
-		List<FavItemView> filist = favItemDao.getIndexFiList(memberid);
-		
-		if(filist.isEmpty())
-			filist=null;
-		
-		return filist;
-	}
-	
-	public List<FavItemView> getFiViewList(String uid){
 		Member member = memberDao.getFromUid(uid);
 		int memberid = member.getId();
 		List<FavItemView> filist = favItemDao.getViewList(memberid);
@@ -49,22 +38,11 @@ public class MemberService { //인덱스 서비스로 가는게 맞는가 ?
 			filist=null;
 		
 		return filist;
-		
 	}
 	
-	public List<FavSellerView> getIndexFvList(String uid) {
-		
-		Member member = memberDao.getFromUid(uid);
-		int memberid = member.getId();
-		List<FavSellerView> fslist = favSellerDao.getIndexFarmList(memberid);
-		
-		if(fslist.isEmpty())
-			fslist=null;
-		
-		return fslist;
-	}
 	
-	public List<FavSellerView> getFarmViewList(String uid){
+	public List<FavSellerView> getFarmViewList(String uid) {
+		
 		Member member = memberDao.getFromUid(uid);
 		int memberid = member.getId();
 		List<FavSellerView> fslist = favSellerDao.getFarmViewList(memberid);
@@ -73,8 +51,9 @@ public class MemberService { //인덱스 서비스로 가는게 맞는가 ?
 			fslist=null;
 		
 		return fslist;
-		
 	}
+	
+
 
 
 }

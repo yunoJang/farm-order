@@ -202,7 +202,7 @@
                         	<c:if test="${filist eq null}">
                             <div class="list-none-msg">관심 상품이 없습니다.</div>
                            </c:if>
-                            <c:forEach var="n" items="${filist}">	
+                            <c:forEach var="n" items="${filist}" begin="0" end="3">	
                             	<a class="fav-item" href="/item/${n.itemId}">
                             		<div class="att-item">
                             			<img src="../images/${n.itemImgName }">
@@ -232,7 +232,7 @@
                             <div class="list-none-msg">관심 상품이 없습니다.</div>
                            </c:if>
                            <!-- 나중에 판매자가 고객에게 보여줄 전용view를 만들어서 이동은 어떨까? -->
-                            <c:forEach var="n" items="${fslist}">	
+                            <c:forEach var="n" items="${fslist}" begin="0" end="3">	
                             	<a class="fav-seller" href="">
                             		<div class="att-item">
                             			<img src="../images/sellertitle/${n.titleImage }">

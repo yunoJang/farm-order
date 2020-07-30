@@ -32,10 +32,10 @@ public class IndexController { // 언젠간 잡아야하는데 컨트롤러에 �
 		Member member = memberService.getIndexMember(uid);
 		model.addAttribute("m",member);
 		
-		List<FavItemView> filist = memberService.getIndexFiList(uid);
+		List<FavItemView> filist = memberService.getFiViewList(uid);
 		model.addAttribute("filist",filist);
 		
-		List<FavSellerView> fslist = memberService.getIndexFvList(uid);
+		List<FavSellerView> fslist = memberService.getFarmViewList(uid);
 		model.addAttribute("fslist",fslist);
 		
 		return "member/index";

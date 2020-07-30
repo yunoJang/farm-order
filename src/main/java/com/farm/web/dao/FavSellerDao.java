@@ -21,9 +21,6 @@ public interface FavSellerDao {
 //	void delete(int id);
 	
 	//지욱
-	@Select("select * from FavSellerView where memberId = #{memberId} ORDER BY regdate DESC LIMIT 4")
-	List<FavSellerView> getIndexFarmList(int memberId);
-	
 	@Select("select * from FavSellerView where memberId = #{memberId} ORDER BY regdate")
 	List<FavSellerView> getFarmViewList(int memberId);
 	

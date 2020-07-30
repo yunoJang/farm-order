@@ -23,9 +23,6 @@ public interface FavItemDao {
 	void delete(int id);
 	
 	//지욱
-	@Select("select * from FavItemView where memberId = #{memberId} ORDER BY regdate DESC LIMIT 4")
-	List<FavItemView> getIndexFiList(int memberId);
-	
 	@Select("select * from FavItemView where memberId = #{memberId} ORDER BY regdate")
 	List<FavItemView> getViewList(int memberId);
 
