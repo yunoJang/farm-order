@@ -157,8 +157,8 @@
                     <section>
                         <h1 class="menu-h">관심</h1>
                         <ul>
-                            <li><a href="">최근 본 상품</a></li>
-                            <li><a href="">관심 Farm</a></li>
+                            <li><a href="#fav-item">관심 상품</a></li>
+                            <li><a href="#lately">최근 본 상품</a></li>
                         </ul>
                     </section>
                     <section>
@@ -195,7 +195,7 @@
                     <h1 class="d-none">관심목록</h1>
                     <section>
                         <header>
-                            <h1 class="menu-h">관심상품</h1>
+                            <h1 id="fav-item" class="menu-h">관심상품</h1>
                             <a href="" class="all-view-font fav-item">전체보기</a>
                         </header>
                         <div class="att-list fav-item-list">
@@ -214,7 +214,7 @@
                     </section>
                     <section>
                         <header>
-                            <h1 class="menu-h">최근 본 상품</h1>
+                            <h1 id="lately" class="menu-h">최근 본 상품</h1>
                             <span class="all-view-font">전체보기</span>
                         </header>
                         <div class="att-list">

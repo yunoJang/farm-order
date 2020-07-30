@@ -17,11 +17,10 @@ import com.farm.web.service.MemberService;
 
 @Controller("memberIndex")
 @RequestMapping("/member/")
-public class IndexController { // 언젠간 잡아야하는데 컨트롤러에 멤버 컨트롤러에서 인데스를 해줘야 맞는것같다.
+public class HomeController { // 언젠간 잡아야하는데 컨트롤러에 멤버 컨트롤러에서 인데스를 해줘야 맞는것같다.
 
 	@Autowired
 	MemberService memberService;
-	
 	
 	@GetMapping("index")
 	public String index(Principal principal,Model model) {
@@ -64,5 +63,6 @@ public class IndexController { // 언젠간 잡아야하는데 컨트롤러에 �
 		
 		return fslist;
 	}
+	
 	
 }
