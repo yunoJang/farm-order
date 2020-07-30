@@ -48,16 +48,4 @@ public class FavItemService {
 		return res;
 	}
 	
-	public List<FavItemView> getViewList(String uid){
-		Member member = memberDao.getFromUid(uid);
-		int memberid = member.getId();
-		List<FavItemView> filist = favItemDao.getViewList(memberid);
-		
-		if(filist.isEmpty())
-			filist=null;
-		
-		return filist;
-		
-	}
-
 }

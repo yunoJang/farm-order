@@ -203,7 +203,7 @@
                             <div class="list-none-msg">관심 상품이 없습니다.</div>
                            </c:if>
                             <c:forEach var="n" items="${filist}">	
-                            	<a class="fav" href="/item/${n.itemId}">
+                            	<a class="fav-item" href="/item/${n.itemId}">
                             		<div class="att-item">
                             			<img src="../images/${n.itemImgName }">
                             			<div class="att-item-des">[은팜독점] ${ n.itemName}</div>
@@ -225,11 +225,21 @@
                     <section>
                         <header>
                             <h1 class="menu-h">관심 Farm</h1>
-                            <span class="all-view-font">전체보기</span>
+                            <a href="" class="all-view-font fav-seller">전체보기</a>
                         </header>
-                        <div class="att-list">
-                            <div class="list-none-msg">관심 농장이 없습니다.</div>
-
+                        <div class="att-list fav-seller-list">
+                            <c:if test="${fslist eq null}">
+                            <div class="list-none-msg">관심 상품이 없습니다.</div>
+                           </c:if>
+                           <!-- 나중에 판매자가 고객에게 보여줄 전용view를 만들어서 이동은 어떨까? -->
+                            <c:forEach var="n" items="${fslist}">	
+                            	<a class="fav-seller" href="">
+                            		<div class="att-item">
+                            			<img src="../images/sellertitle/${n.titleImage }">
+                            			<div class="att-item-des">${ n.comName}</div>
+                            		</div>
+                            	</a>
+                            </c:forEach>
                         </div>
                     </section>
                 </section>

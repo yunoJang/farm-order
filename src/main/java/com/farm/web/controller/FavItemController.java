@@ -32,16 +32,4 @@ public class FavItemController {
 		return res;
 	}
 	
-	@GetMapping("viewList")
-	@ResponseBody
-	public List<FavItemView> viewList(
-			Principal principal) {
-//		String uName = principal.getName();
-		String uid = "yuno"; 
-		
-		List<FavItemView> filist = favItemService.getViewList(uid);
-		
-		return filist;
-	}
-	
 }
