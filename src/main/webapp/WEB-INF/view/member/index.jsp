@@ -177,15 +177,15 @@
                     <h1 class="d-none">쇼핑메뉴</h1>
                     <div class="shopping-menu-container">
                         <div class="member-info-container">
-                            <div class="member-grade-img">P</div><span class="member-info">개인 회원 <b>장윤호</b> 님</span>
+                            <div class="member-grade-img">P</div><span class="member-info">개인 회원 <b>${m.name }</b> 님</span>
                         </div>
                         <div class="shopping-menu">
                             <div>
-                                <div>0</div>
+                                <div>${ocount }</div>
                                 <span>주문/배송</span>
                             </div>
                             <div>
-                                <div>0</div>
+                                <div>${bcount }</div>
                                 <span>장바구니</span>
                             </div>
                         </div>

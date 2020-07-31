@@ -25,5 +25,7 @@ public interface BasketDao {
 	@Delete("delete from Basket where id in (${List})")
 	int delList(String idList);
 
-
+	//지욱
+	@Select("SELECT count(*) count FROM Basket where memberId = ${memberId}")
+	Integer getCount(int memberId);
 }

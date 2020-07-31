@@ -194,6 +194,11 @@
             border: 1px solid #ddd;
             table-layout: fixed;
         }
+        
+        .order-table .mis{
+        	height: 130px;
+        }
+        
         .order-table th {
             height: 40px;
             color: #666;
@@ -208,10 +213,12 @@
         .order-table th:last-child {
             background-image: none;
         }
+        .order-table tr {
+        	border-bottom: 1px solid #ddd;
+        }
         .order-table td {
             padding: 5px 0;
             color: #666;
-            border-bottom: 1px solid #ddd;
         }
         .order-table-bold {
             font-weight: 600;

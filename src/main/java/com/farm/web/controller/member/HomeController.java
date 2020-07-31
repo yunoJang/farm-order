@@ -3,16 +3,18 @@ package com.farm.web.controller.member;
 import java.security.Principal;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.farm.web.entity.FavItemView;
 import com.farm.web.entity.FavSellerView;
+import com.farm.web.entity.Item;
 import com.farm.web.entity.Member;
 import com.farm.web.service.MemberService;
 
@@ -24,7 +26,7 @@ public class HomeController { // 언젠간 잡아야하는데 컨트롤러에 �
 	MemberService memberService;
 	
 	@GetMapping("index")
-	public String index(Principal principal,Model model) {
+	public String index(Principal principal,Model model,HttpSession session) {
 		
 //		String uid = principal.getName();
 		String uid = "yuno";
@@ -37,6 +39,13 @@ public class HomeController { // 언젠간 잡아야하는데 컨트롤러에 �
 		
 		List<FavSellerView> fslist = memberService.getFarmViewList(uid);
 		model.addAttribute("fslist",fslist);
+		
+		List<Item> recentItems =(List<Item>)session.getAttribute("recentItems");
+		model.addAttribute("recentItems",recentItems);
+		
+		model.addAttribute("bcount",memberService.getBasketCount(uid));
+		model.addAttribute("ocount",memberService.getOrderItemCount(uid));
+
 		
 		return "member/index";
 	}

@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Update;
 
 import com.farm.web.entity.OrderItem;
 import com.farm.web.entity.OrderItemView;
+import com.farm.web.entity.SimpleCountView;
 
 @Mapper
 public interface OrderItemDao {
@@ -32,8 +33,15 @@ public interface OrderItemDao {
 	int delete();
 	
 	//지욱
-	@Select("select * from OrderItemView where mUid='${uid}'")
+	@Select("select * from OrderItemView where mUid='${uid}' order by payDDate DESC")
 	List<OrderItemView> getListToUid(String uid);
+
+	@Update("update OrderItem set ${field}='${query}' where id=#{id}")
+	int updateStatus(int id,String field,String query);
+	
+	@Select("SELECT status element,COUNT(status) count FROM OrderItemView where mUid = #{uid} group by status")
+	List<SimpleCountView> getCount(String uid);
+	
 
 	
 }

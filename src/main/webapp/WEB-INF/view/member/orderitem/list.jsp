@@ -9,7 +9,8 @@
     <link rel="stylesheet" type="text/css" href="/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/js/index.js"></script>
+    <script src="../../../js/index.js"></script>
+    <script src="../../../js/member/order.js"></script>
     <title>은풍한 팜</title>
 </head>
 
@@ -146,10 +147,10 @@
             <div class="path">
                 <ol>
                     <li>
-                        <a href="/index.html"></a>
+                        <a href="/index"></a>
                     </li>
                     <li>
-                        <a href="/user/order.html">주문조회</a>
+                        <a href="/user/order">주문조회</a>
                     </li>
                 </ol>
             </div>
@@ -160,20 +161,45 @@
                 <h1 class="d-none">주문목록</h1>
 
                 <div class="order-cur-box">
-                    
+
+                    <c:forEach var="c" items="${colist}">
+                    	<c:choose>
+						    <c:when test="${c.element eq '배송중'}">
+								<c:set var="count1" value="${c.count}" />
+						    </c:when>
+					     	<c:when test="${c.element eq '배송완료'}">
+								<c:set var="count2" value="${c.count}" />
+						    </c:when>
+							<c:when test="${c.element eq '주문취소'}">
+								<c:set var="count3" value="${c.count}" />
+						    </c:when>
+						    <c:otherwise>
+
+						    </c:otherwise>
+						</c:choose>
+                    </c:forEach>
+                    			<c:if test="${count1 eq null }">
+										<c:set var="count1" value="0" />
+								</c:if>
+								<c:if test="${count2 eq null }">
+										<c:set var="count2" value="0" />
+								</c:if>
+								<c:if test="${count3 eq null }">
+										<c:set var="count3" value="0" />
+								</c:if>
                     <dl>
-                        <dt>1</dt>
+                        <dt>${count1 }</dt>
                         <dd>배송중</dd>
                     </dl>
                     
                     <dl>
-                        <dt>0</dt>
+                        <dt>${count2 }</dt>
                         <dd>배송완료</dd>
                     </dl>
                     
                     <dl>
-                        <dt>2</dt>
-                        <dd>취소/환불/교환</dd>
+                        <dt>${count3 }</dt>
+                        <dd>주문취소</dd>
                     </dl>          
                 </div>
 
@@ -197,7 +223,7 @@
 
                     <tbody>
                         <c:forEach var="n" items="${oilist}">
-                        <tr>
+                        <tr class="mis">
                             <td class="d-none">
                                 <input type="checkbox"/>
                                 <label class="d-none">상품 선택</label>
@@ -218,26 +244,26 @@
 
 								<c:choose>
 								    <c:when test="${status eq '입금대기'}">
-								       <a href="" class="re-button">리뷰작성</a>
-								       <a href="" class="re-button">상품 QnA</a>
-								       <a href="" class="re-button">주문취소</a>
+								       <a href="/product/details/${n.itemId }" class="re-button">리뷰작성</a>
+								       <a href="/product/details/${n.itemId }" class="re-button">상품 QnA</a>
+								       <a href="cancle?id=${n.id }" class="re-button cancle">주문취소</a>
 								    </c:when>
 								     <c:when test="${status eq '입금확인'}">
-								       <a href="" class="re-button">리뷰작성</a>
-								       <a href="" class="re-button">상품 QnA</a>
-								       <a href="" class="re-button">주문취소</a>
+								       <a href="/product/details/${n.itemId }" class="re-button">리뷰작성</a>
+								       <a href="/product/details/${n.itemId }" class="re-button">상품 QnA</a>
+								       <a href="cancle?id=${n.id }" class="re-button cancle">주문취소</a>
 								    </c:when>
 								     <c:when test="${status eq '배송중'}">
-								       <a href="" class="re-button">리뷰작성</a>
-								       <a href="" class="re-button">상품 QnA</a>
-								       <a href="" class="re-button">배송확인</a>
+								       <a href="/product/details/${n.itemId }" class="re-button">리뷰작성</a>
+								       <a href="/product/details/${n.itemId }" class="re-button">상품 QnA</a>
+								       <a href="https://tracker.delivery/#/kr.epost/${n.waybillNum }" target="_blank" class="re-button">배송확인</a>
 								    </c:when>
 								     <c:when test="${status eq '배송완료'}">
-								       <a href="" class="re-button">리뷰작성</a>
-								       <a href="" class="re-button">상품 QnA</a>
+								       <a href="/product/details/${n.itemId }" class="re-button">리뷰작성</a>
+								       <a href="/product/details/${n.itemId }" class="re-button">상품 QnA</a>
 								    </c:when>
 								     <c:when test="${status eq '주문취소'}">
-								       <a href="" class="re-button">상품 QnA</a>
+								       <a href="/product/details/${n.itemId }" class="re-button">상품 QnA</a>
 								    </c:when>
 								</c:choose>
 
@@ -247,9 +273,8 @@
                         </c:forEach>
 
                     </tbody>
-
+					
                 </table>
-
                 <div class="product-button-wrap d-none">
                     <button type="button" class="product-button">선택상품 취소</button>
                     <button type="button" class="product-button">선택상품 변경</button>
@@ -262,7 +287,7 @@
             </div>
         </section>
     </main>
-
+	
     <footer class="footer">
         
         <button class="up-button"> </button>
