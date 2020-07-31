@@ -196,16 +196,16 @@
         border: 1px solid #dbdbdb;
         height: 30px;
     }
-    .add-row>input[type=text]{
+    .add-row input[type=text]{
         margin-top: 5px;
         margin-right: 5px;
         width: 300px;
     }
-    .add-row>input:first-child{
+    .add-row input:first-child{
         margin: 0;
         width: 60px;
     }
-    .add-row>button{
+    .add-row button{
         cursor: pointer;
         width: 100px;
         height: 30px;

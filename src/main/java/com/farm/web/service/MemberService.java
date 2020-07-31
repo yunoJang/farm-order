@@ -65,7 +65,7 @@ public class MemberService { //인덱스 서비스로 가는게 맞는가 ?
 		Member member = memberDao.getFromUid(uid);
 		int memberid = member.getId();
 		
-		Integer bcount = bastketDao.getCount(memberid);
+		Integer bcount = bastketDao.getCountToMemer(memberid);
 		if(bcount==null)
 			bcount=0;
 		
