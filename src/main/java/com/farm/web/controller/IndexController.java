@@ -14,4 +14,11 @@ public class IndexController {
 		return "index";
 	
 	}
+	
+	@GetMapping("err")
+	public String err() {
+		
+		return "err";
+	
+	}
 }

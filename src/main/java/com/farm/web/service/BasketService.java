@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.farm.web.dao.BasketDao;
 import com.farm.web.dao.MemberDao;
 import com.farm.web.entity.Basket;
+import com.farm.web.entity.BasketPayView;
 import com.farm.web.entity.BasketView;
 import com.farm.web.entity.Member;
 
@@ -75,10 +76,10 @@ public class BasketService {
 	}
 
 	public int delList(int[] selectRows) {
+		
 		String idList = "";
 		for(int i : selectRows)
 			idList += i+",";
-		
 		idList = idList.substring(0, idList.length()-1);
 		
 		return basketDao.delList(idList);
@@ -86,6 +87,35 @@ public class BasketService {
 
 	public int update(int id, int qty) {
 		return basketDao.update(id, "qty", qty);
+	}
+
+	public boolean isAllContain(String uName, int[] selectRows) {
+		boolean res = false;
+		
+		String idList = "";
+		for(int i : selectRows)
+			idList += i+",";
+		idList = idList.substring(0, idList.length()-1);
+		
+		int count = basketDao.getCount(uName,idList);
+		
+		if(selectRows.length==count)
+			res = true;
+		
+		return res;
+	}
+
+	public List<BasketPayView> getPayList(String uName, int[] selectRows) {
+		
+		Member member = memberDao.getFromUid(uName);
+		int memberId = member.getId();
+		
+		String idList = "";
+		for(int i : selectRows)
+			idList += i+",";
+		idList = idList.substring(0, idList.length()-1);
+		
+		return basketDao.getPayList(memberId,idList);
 	}
 
 

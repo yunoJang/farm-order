@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.farm.web.entity.BasketPayView;
 import com.farm.web.entity.BasketView;
 import com.farm.web.service.BasketService;
 
@@ -21,6 +23,38 @@ import com.farm.web.service.BasketService;
 public class BasketController {
 	@Autowired
 	BasketService basketService;
+	
+	@GetMapping("pay/{selectRows}")
+	public String pay(@PathVariable int[] selectRows,
+			Principal principal,
+			Model model) {
+//		String uName = principal.getName();
+		String uName = "yuno";
+		
+		// ids 유효성 검사 // 내 카트에 있는 상품을 주문하는지
+		if(!basketService.isAllContain(uName,selectRows))
+			return "err";
+		
+		List<BasketPayView> payList = basketService.getPayList(uName,selectRows);
+		model.addAttribute("pl",payList);
+		model.addAttribute("m",payList.get(0));
+		
+		Map<String, Integer> total = new HashMap<>();
+		
+		int totalPrice = 0;
+		int totalFee = 0;
+		for(BasketPayView p : payList) {
+			totalPrice += p.getPrice()*p.getQty();
+			totalFee += p.getDeliveryFee();
+		}
+		total.put("tp", totalPrice);
+		total.put("tf", totalFee);
+		
+		model.addAllAttributes(total);
+		
+		return "member/basket/pay";
+	}
+	
 	
 	@GetMapping("list")
 	public String list(Principal principal,
@@ -43,7 +77,7 @@ public class BasketController {
 		model.addAllAttributes(price);
 		model.addAttribute("bl",basketList);
 		
-		return "member/basket";
+		return "member/basket/list";
 	}
 	
 	@ResponseBody

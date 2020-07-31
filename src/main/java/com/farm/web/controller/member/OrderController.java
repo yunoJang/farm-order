@@ -6,12 +6,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/member/order/")
+
 public class OrderController {
 	
 	@GetMapping("list")
 	public String list() {
 		
 		
-		return "member/order";
+		return "member/order/list";
 	}
+	
+	
 }

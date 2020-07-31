@@ -10,9 +10,20 @@ $(()=>{
     let itp = priceContainer.find(".item-total-price");
     let ftp = priceContainer.find(".fee-total-price");
     let tp = priceContainer.find(".total-price>span");
+    let orderButtonWrapper = $(".order-button-wrap");
+    let orderButton = orderButtonWrapper.find(".order");
     
     // 
     let selectRows = [];
+
+
+    orderButton.click(e=>{
+        if(selectRows.length<=0){
+            alert("하나 이상 선택해주세요");
+            return;
+        }
+        window.location.href=`pay/${selectRows}`;
+    })
 
     checkBox.each(idx => {
         if (checkBox.eq(idx).prop("checked"))
