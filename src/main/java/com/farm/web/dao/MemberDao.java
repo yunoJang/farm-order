@@ -3,10 +3,10 @@ package com.farm.web.dao;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.farm.web.entity.AdminSellerView;
 import com.farm.web.entity.Member;
@@ -41,5 +41,8 @@ public interface MemberDao {
 	
 //	@Delete("DELETE FROM Member WHERE uid = ${uid}")
 //	int delete(String uid);
+	
+	@Update("update Member set email=#{m.email}, address=#{m.address} , mobile=#{m.mobile} , phone = #{m.phone} where uid = #{userId}")
+	int updateToMypage(@Param("m")Member member,String userId);
 	
 }

@@ -9,12 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.farm.web.entity.FavItemView;
 import com.farm.web.entity.FavSellerView;
-import com.farm.web.entity.Item;
 import com.farm.web.entity.Member;
 import com.farm.web.service.MemberService;
 
@@ -76,31 +77,64 @@ public class HomeController { // 언젠간 잡아야하는데 컨트롤러에 �
 	
 	
 	
-//	@GetMapping("edit")
-//	public String edit(Principal principal,Model model) {
-//		
-////		String uid = principal.getName();
-//		String uid = "yuno";
-//		
-//		Member member = memberService.getMember(uid);
-//		System.out.println(member);
-//		model.addAttribute("m",member);
-//		
-//		
-//		return "member/edit";
-//	}
-//	
-//	@PostMapping("edit")
-//	public String edit(Principal principal,Model model,Member member) {
-//		
-////		String uid = principal.getName();
-//		String uid = "yuno";
-//		
-//		
-//	
-//		
-//		
-//		return "member/index";
-//	}
+	@GetMapping("edit")
+	public String edit(Principal principal,Model model) {
+		
+//		String uid = principal.getName();
+		String uid = "yuno";
+		
+		Member member = memberService.getMember(uid);
+		System.out.println(member);
+		model.addAttribute("m",member);
+		
+		return "member.edit";
+	}
+	
+	@PostMapping("edit")
+	public String edit(Principal principal,Model model,Member member,
+			@RequestParam(name = "a", defaultValue = "") String[] eAddress,
+			@RequestParam(name = "m", defaultValue = "") String[] eMobile,
+			@RequestParam(name = "p", defaultValue = "") String[] ePhone) {
+		
+//		String uid = principal.getName();
+		String uid = "yuno";
+		
+		String address = "";
+		String mobile = "";
+		String phone = "";
+		
+		for(int i = 0 ; i<eAddress.length;i++) {
+			if(i==0)
+				address+=eAddress[i];	
+			else
+				address+="/"+eAddress[i];
+		}
+		
+		for(int i = 0 ; i<eMobile.length;i++) {
+			if(i==0)
+				mobile+=eMobile[i];
+			else
+				mobile+="-"+eMobile[i];
+		}
+		
+		for(int i = 0 ; i<ePhone.length;i++) {
+			if(ePhone[i].equals("")) {
+				phone=null;
+				break;
+			}
+			else if(i==0)
+				phone+=ePhone[i];
+			else
+				phone+="-"+ePhone[i];
+		}
+	
+		member.setAddress(address);
+		member.setMobile(mobile);
+		member.setPhone(phone);
+		System.out.println(member);
+		memberService.editMember(uid,member);
+		
+		return "redirect:index";
+	}
 	
 }

@@ -10,10 +10,10 @@
             <div class="path">
                 <ol>
                     <li>
-                        <a href="/index"></a>
+                        <a href="/member/index"></a>
                     </li>
                     <li>
-                        <a href="/user/order">주문조회</a>
+                        <a href="/member/orderitem/list">주문조회</a>
                     </li>
                 </ol>
             </div>
@@ -129,7 +129,6 @@
 								       <a href="/product/details/${n.itemId }" class="re-button">상품 QnA</a>
 								    </c:when>
 								</c:choose>
-
                             </td>
                         </tr>
                         </c:forEach>

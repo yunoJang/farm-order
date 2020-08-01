@@ -76,13 +76,20 @@ public class MemberService { //인덱스 서비스로 가는게 맞는가 ?
 
 		List<SimpleCountView> colist = orderItemDao.getCount(uid);
 		int total = 0;
-		System.out.println(colist);
+
 		for(SimpleCountView c : colist) {
 			if(c.getElement()=="배송중"||c.getElement()=="입금대기"||c.getElement()=="입금확인")
 				total+=c.getCount();
 		}
 		
 		return total;
+	}
+
+	public int editMember(String userId, Member member) {
+		
+		
+		return memberDao.updateToMypage(member,userId);
+		
 	}
 
 

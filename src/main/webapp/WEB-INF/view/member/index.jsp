@@ -25,8 +25,8 @@
                     <section>
                         <h1 class="menu-h">주문 · 배송</h1>
                         <ul>
-                            <li><a href="">주문/배송 조회</a></li>
-                            <li><a href="">장바구니</a></li>
+                            <li><a href="orderitem/list">주문/배송 조회</a></li>
+                            <li><a href="basket/list">장바구니</a></li>
                         </ul>
 
 
@@ -93,7 +93,7 @@
                             <c:if test="${fslist eq null}">
                             <div class="list-none-msg">관심 상품이 없습니다.</div>
                            </c:if>
-                           <!-- 나중에 판매자가 고객에게 보여줄 전용view를 만들어서 이동은 어떨까? -->
+                           <!-- 나중에 판매자가 고객에게 보여줄 페이지가 있으면 아래의 a태그 수정 -->
                             <c:forEach var="n" items="${fslist}" begin="0" end="3">	
                             	<a class="fav-seller" href="">
                             		<div class="att-item">
