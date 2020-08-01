@@ -3,6 +3,8 @@ package com.farm.web.controller.member;
 import java.security.Principal;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,9 +33,9 @@ public class OrderItemController {
 		
 		List<SimpleCountView> colist = orderservice.getCount(uid);
 		model.addAttribute("colist", colist);
-		System.out.println(colist);
+
 		
-		return "member/orderitem/list";
+		return "member.orderitem.list";
 	}
 	
 	@GetMapping("cancle")

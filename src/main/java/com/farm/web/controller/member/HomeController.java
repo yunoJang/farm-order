@@ -36,18 +36,18 @@ public class HomeController { // 언젠간 잡아야하는데 컨트롤러에 �
 		
 		List<FavItemView> filist = memberService.getFiViewList(uid);
 		model.addAttribute("filist",filist);
-		
+//		
 		List<FavSellerView> fslist = memberService.getFarmViewList(uid);
 		model.addAttribute("fslist",fslist);
-		
-		List<Item> recentItems =(List<Item>)session.getAttribute("recentItems");
-		model.addAttribute("recentItems",recentItems);
+//		
+//		List<Item> recentItems = (List<Item>)session.getAttribute("recentItems");
+//		model.addAttribute("recentItems",recentItems);
 		
 		model.addAttribute("bcount",memberService.getBasketCount(uid));
 		model.addAttribute("ocount",memberService.getOrderItemCount(uid));
 
 		
-		return "member/index";
+		return "member.index";
 	}
 	
 	@GetMapping("favitemlist")

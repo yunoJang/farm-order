@@ -52,7 +52,7 @@ public class BasketController {
 		
 		model.addAllAttributes(total);
 		
-		return "member/basket/pay";
+		return "member.basket.pay";
 	}
 	
 	
@@ -77,7 +77,7 @@ public class BasketController {
 		model.addAllAttributes(price);
 		model.addAttribute("bl",basketList);
 		
-		return "member/basket/list";
+		return "member.basket.list";
 	}
 	
 	@ResponseBody

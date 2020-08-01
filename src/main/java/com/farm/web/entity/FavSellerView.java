@@ -11,11 +11,11 @@ public class FavSellerView {
 	private int brn;
 	private String repName;
 	private String staffName; 
-	private int phone;
+	private String phone;
 	private String email;
 	private String files;
 	private String sellingUrl;
-	private String item;
+	private String telephone;
 	private Date regDate;
 	private Date appDate;
 	private String titleImage;
@@ -26,7 +26,7 @@ public class FavSellerView {
 	
 	
 	public FavSellerView(int id, String title, String content, String comName, int brn, String repName,
-			String staffName, int phone, String email, String files, String sellingUrl, String item, Date regDate,
+			String staffName, String phone, String email, String files, String sellingUrl, String telephone, Date regDate,
 			Date appDate, String titleImage) {
 		super();
 		this.id = id;
@@ -40,7 +40,7 @@ public class FavSellerView {
 		this.email = email;
 		this.files = files;
 		this.sellingUrl = sellingUrl;
-		this.item = item;
+		this.telephone = telephone;
 		this.regDate = regDate;
 		this.appDate = appDate;
 		this.titleImage = titleImage;
@@ -88,10 +88,10 @@ public class FavSellerView {
 	public void setStaffName(String staffName) {
 		this.staffName = staffName;
 	}
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public String getEmail() {
@@ -112,11 +112,11 @@ public class FavSellerView {
 	public void setSellingUrl(String sellingUrl) {
 		this.sellingUrl = sellingUrl;
 	}
-	public String getItem() {
-		return item;
+	public String gettelephone() {
+		return telephone;
 	}
-	public void setItem(String item) {
-		this.item = item;
+	public void settelephone(String telephone) {
+		this.telephone = telephone;
 	}
 	public Date getRegDate() {
 		return regDate;
@@ -142,7 +142,7 @@ public class FavSellerView {
 	public String toString() {
 		return "FavSellerView [id=" + id + ", title=" + title + ", content=" + content + ", comName=" + comName
 				+ ", brn=" + brn + ", repName=" + repName + ", staffName=" + staffName + ", phone=" + phone + ", email="
-				+ email + ", files=" + files + ", sellingUrl=" + sellingUrl + ", item=" + item + ", regDate=" + regDate
+				+ email + ", files=" + files + ", sellingUrl=" + sellingUrl + ", telephone=" + telephone + ", regDate=" + regDate
 				+ ", appDate=" + appDate + ", titleImage=" + titleImage + "]";
 	}
 	
