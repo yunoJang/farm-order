@@ -13,6 +13,8 @@ public class OrderItemView extends OrderItem{
 	private int iPrice;
 	private Date oRegDate;
 	private String oDes;
+	private String dComId;
+	private String dName;
 	
 	public OrderItemView() {
 		// TODO Auto-generated constructor stub
@@ -90,13 +92,28 @@ public class OrderItemView extends OrderItem{
 		this.oDes = oDes;
 	}
 
+	public String getdComId() {
+		return dComId;
+	}
+
+	public void setdComId(String dComId) {
+		this.dComId = dComId;
+	}
+
+	public String getdName() {
+		return dName;
+	}
+
+	public void setdName(String dName) {
+		this.dName = dName;
+	}
+
 	@Override
 	public String toString() {
 		return "OrderItemView [mUid=" + mUid + ", mName=" + mName + ", iName=" + iName + ", iRegName=" + iRegName
 				+ ", iImage=" + iImage + ", iSellerId=" + iSellerId + ", iPrice=" + iPrice + ", oRegDate=" + oRegDate
-				+ ", oDes=" + oDes + ", toString()=" + super.toString() + "]";
+				+ ", oDes=" + oDes + ", dComId=" + dComId + ", dName=" + dName + ", toString()=" + super.toString()
+				+ "]";
 	}
-
-	
 	
 }
