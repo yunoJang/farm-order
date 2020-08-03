@@ -119,7 +119,7 @@
 								     <c:when test="${status eq '배송중'}">
 								       <a href="/product/details/${n.itemId }" class="re-button">리뷰작성</a>
 								       <a href="/product/details/${n.itemId }" class="re-button">상품 QnA</a>
-								       <a href="https://tracker.delivery/#/kr.epost/${n.waybillNum }" target="_blank" class="re-button">배송확인</a>
+								       <a href="https://tracker.delivery/#/${n.dComId }/${n.waybillNum }" target="_blank" class="re-button">배송확인</a>
 								    </c:when>
 								     <c:when test="${status eq '배송완료'}">
 								       <a href="/product/details/${n.itemId }" class="re-button">리뷰작성</a>
